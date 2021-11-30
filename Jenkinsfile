@@ -24,7 +24,7 @@ pipeline{
             
             steps{
                 
-                echo "Building project"
+                echo "Testing project"
                 
             }
           
@@ -34,7 +34,7 @@ pipeline{
         
             steps{
                 
-                echo "Building project"
+                echo "Deploying project"
             }
         }
     
