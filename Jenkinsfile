@@ -4,8 +4,8 @@ pipeline{
         MYNAME = "Raff"
     }
     parameters{
-        string(name: 'Password' defaultValue: '', description: 'Value of password')
-        choice(name: 'Gender' choice:['Male', 'Female'], descritpion: 'Gender: ')
+        string(name: 'Password', defaultValue: '', description: 'Value of password')
+        choice(name: 'Gender', choice:['Male', 'Female'], descritpion: 'Gender: ')
     }
 
     stages{
