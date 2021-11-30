@@ -5,7 +5,7 @@ pipeline{
     }
     parameters{
         string(name: 'Password', defaultValue: '', description: 'Value of password')
-        choice(name: 'Gender', choice:['Male', 'Female'], descritpion: 'Gender: ')
+        choice(name: 'Gender', choices:['Male', 'Female'], description: 'Gender: ')
     }
 
     stages{
@@ -33,7 +33,7 @@ pipeline{
                     MYNAME == "Raff"
                 }
             }
-            step{
+            steps{
                 echo "Testing App"
             }
         }
@@ -46,7 +46,7 @@ pipeline{
                 }
             }
 
-            step{
+            steps{
                 echo "Deploying app"
             }
 
