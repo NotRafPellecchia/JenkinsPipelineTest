@@ -1,42 +1,66 @@
 pipeline{
     agent any
-    
+    environment{
+        MYNAME = "Raff"
+    }
+    parameters{
+        string(name: 'Password' defaultValue: '', description: 'Value of password')
+        choice(name: 'Gender' choice:['Male', 'Female'], descritpion: 'Gender: ')
+    }
+
     stages{
-
         stage("Build"){
-
             steps{
-                
-                echo "Building project"
-
+                echo "========executing A========"
+                echo "Building from: ${MYNAME}"
             }
-
-        }
-    
-        stage("Test"){
-            when{
-                expression{
-                    
-                    BRANCH_NAME == 'main'
-                    
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
                 }
             }
-            
-            steps{
-                
-                echo "Testing project"
-                
-            }
-          
         }
-    
+        stage("Test"){
+
+            when{
+                expression{
+                    MYNAME == "Raff"
+                }
+            }
+            step{
+                echo "Testing App"
+            }
+        }
+
         stage("Deploy"){
-        
-            steps{
-                
-                echo "Deploying project"
+
+            when{
+                expression{
+                    params.Password == "Admin"
+                }
             }
+
+            step{
+                echo "Deploying app"
+            }
+
         }
-    
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
     }
 }
